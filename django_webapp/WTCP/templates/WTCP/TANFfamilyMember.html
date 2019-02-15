@@ -1,0 +1,34 @@
+{% extends 'WTCP/base.html' %}
+
+  {% block content %}
+      <script language="JavaScript" type="text/javascript" src="scripts.js"></script>
+      <script language="JavaScript" type="text/javascript">
+      function more()
+      {
+      	fork = document.getElementById("isApplicant").checked;
+      	if(fork == true) {
+      	    show([],["notapplicant"]);
+      	}
+          else {
+              show(["notapplicant"],[]);
+          }
+      }
+      </script>
+        </head>
+          <h1>TANF 1B</h1>
+            <h3>Add New Family Member</h3>
+            <form>
+              <label>Choose student</label>
+              <select>
+                  <!--sql query student names-->
+              </select><br />
+                <input type="checkbox" name="isApplicant" id="isApplicant" onchange="more()">I am adding the applicant<br />
+                <div id="notapplicant" class="">
+                    <label>Name</label><input type="text" name="Name" /><br />
+                    <label>Relationship to You</label><input type="text" name="relationship" /><br />
+                </div>
+                <!--else, hidden value with "Applicant" as name and relationship-->
+                <label>Date of Birth</label><input type="date" name="dateOfBirth" /><br />
+                <label>Place of Birth</label><input type="text" name="placeOfBirth" />
+          </form>
+  {% endblock content %}

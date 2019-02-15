@@ -1,0 +1,40 @@
+{% extends 'WTCP/base.html' %}
+
+  {% block content %}
+      <script language="JavaScript" type="text/javascript" src="scripts.js"></script>
+      <script language="JavaScript" type="text/javascript">
+        i = 0;
+        function add()
+        {
+            var div = document.getElementById("benefits");
+            bene ='<label>Choose benefit</label>' +
+                    '<select>' +
+                            '<option name="benefitID' + i + '" value="">--</option>' +
+                            '<option name="benefitID' + i + '" value="1">Family Assistance/Safety Net</option>' +
+                            '<option name="benefitID' + i + '" value="2">Medicaid</option>' +
+                            '<option name="benefitID' + i + '" value="3">SNAP</option>' +
+                            '<option name="benefitID' + i + '" value="4">HEAP</option>' +
+                            '<option name="benefitID' + i + '" value="5">SSI</option>' +
+                            '<option name="benefitID' + i + '" value="6">School Lunch Benefits</option>' +
+                        '</select><br />' +
+                    '<input type="checkbox" name="approved' + i + '">Approved<br />';
+            div.innerHTML += bene;
+            i++;
+        }
+      </script>
+        </head>
+          <h1>TANF 3A</h1>
+          <h3>Public Benefits</h3>
+            <form>
+              <label>Choose student</label>
+              <select>
+                  <!--sql query student names-->
+              </select><br />
+              <div id="benefits">
+
+              </div>
+              <!--some kind of error checking to make sure benefits don't repeat?-->
+            </form>
+          <button onclick="add()">Add Another Benefit</button>
+        <script language="JavaScript" type="text/javascript">add();</script>
+  {% endblock content %}

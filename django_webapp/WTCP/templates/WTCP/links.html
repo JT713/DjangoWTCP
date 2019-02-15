@@ -1,0 +1,12 @@
+{% extends 'WTCP/base.html' %}
+
+  {% block content %}
+        <h1>WTCP</h1>
+          <p><a href="{% url 'studentDetails' %}">Add New Student</a><br />
+            <a href="{% url 'monthlyAssessment' %}">Add Student Assessment</a><br />
+            <a href="{% url 'exitInterview' %}">Add Exit Interview</a><br />
+            <a href="{% url 'tanfFamilyIncome' %}">Add Family Member Income (TANF 3B)</a><br />
+            <a href="{% url 'tanfFamilyMember' %}">Add New Family Member (TANF 1B)</a><br />
+            <a href="{% url 'tanfPublicBenefits' %}">Add Public Benefit Record (TANF 3A)</a>
+          </p>
+  {% endblock content %}

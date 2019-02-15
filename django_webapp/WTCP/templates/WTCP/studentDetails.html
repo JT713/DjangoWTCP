@@ -1,0 +1,77 @@
+{% extends 'WTCP/base.html' %}
+
+  {% block content %}
+      <script language="JavaScript" type="text/javascript" src="scripts.js"></script>
+      <!--script to handle visibility of elements-->
+      <script language="JavaScript" type="text/javascript">
+          function more(code)
+          {
+          	switch(code) {
+          		case 1: //ask for native language
+          			fork = document.getElementById("nativeEnglish").value;
+          			if(fork == "no") {
+          				show(["language"],[]);
+          			}
+          			else {
+          				show([],["language"]);
+          			}
+          			break;
+          		case 2: //ask for ethnicity
+          			fork = document.getElementById("ethnicity").value;
+          			if(fork == "1") {
+          				show(["tribal"],["otherEthnicity"]);
+          			}
+          			else if (fork == "6") {
+          				show(["otherEthnicity"],["tribal"]);
+          			}
+          			else {
+          				show([],["tribal", "otherEthnicity"]);
+          			}
+          	}
+          }
+      </script>
+      </head>
+    <h1>Student Details</h1>
+        <form>
+        <label>Is English your Native Language?</label>
+          <select id="nativeEnglish" onchange="more(1)">
+          	<option name="nativeEnglish" value="">--</option>
+          	<option name="nativeEnglish" value="yes">Yes</option>
+          	<option name="nativeEnglish" value="no">No</option>
+          </select><br />
+        <!--if no-->
+        <div id="language" class="invisible">
+        	<label>What is your Native Language?</label>
+        	<input type="text" name="nativeLanauge"><br />
+        </div>
+        <label>Ethnicity</label>
+          <select id="ethnicity" onchange="more(2)">
+          	<option name="ethnicity" value="">--</option>
+          	<option name="ethnicity" value="1">American Indian/Alaska Native</option>
+          	<option name="ethnicity" value="2">Caucasian</option>
+          	<option name="ethnicity" value="3">Asian/Pacific Islander</option>
+          	<option name="ethnicity" value="4">Black/African American</option>
+          	<option name="ethnicity" value="5">Hispanic/Latino</option>
+          	<option name="ethnicity" value="6">Other</option>
+          	<option name="ethnicity" value="7">Decline to state</option>
+          </select><br />
+        <!--If native-->
+          <div id="tribal" class="invisible">
+          	<label>Tribal Affiliation</label><input type="text" name="ethnicityTribalAffiliation" /><br />
+          </div>
+        <!--If other-->
+          <div id="otherEthnicity" class="invisible">
+          	<label>What is your Ethnicity</label><input type="text" name="ethnicityOther" /><br />
+          </div>
+        <label>Marital Status</label>
+          <select>
+          	<option name="maritalStatus" value="">--</option>
+          	<option name="maritalStatus" value="1">Married</option>
+          	<option name="maritalStatus" value="2">Single</option>
+          	<option name="maritalStatus" value="3">Divorced</option>
+          	<option name="maritalStatus" value="4">Legally Seperated</option>
+          	<option name="maritalStatus" value="5">Seperated</option>
+          	<option name="maritalStatus" value="6">Domestic Partner</option>
+        </select><br />
+      </form>
+  {% endblock content %}

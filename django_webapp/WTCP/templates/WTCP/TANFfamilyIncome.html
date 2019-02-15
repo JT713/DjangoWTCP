@@ -1,0 +1,39 @@
+{% extends 'WTCP/base.html' %}
+
+  {% block content %}
+        <script language="JavaScript" type="text/javascript" src="scripts.js"></script>
+        <script language="JavaScript" type="text/javascript">
+          function more()
+          {
+          	fork = document.getElementById("isApplicant").checked;
+          	if(fork == true) {
+          	    show([],["notapplicant"]);
+          	}
+              else {
+                  show(["notapplicant"],[]);
+              }
+          }
+        </script>
+    </head>
+        <h1>TANF 3B</h1>
+          <h3>Add New Family Member - Income</h3>
+            <form>
+            <label>Choose student</label>
+              <select>
+                  <!--sql query student names-->
+              </select><br />
+                <input type="checkbox" name="isApplicant" id="isApplicant" onchange="more()">I am adding the applicant's income<br />
+                <div id="notapplicant" class="">
+                    <label>Name</label><input type="text" name="Name" /><br />
+                </div>
+                <!--else, hidden value with "Applicant" as name-->
+                <label>Income Source</label><input type="text" name="incomeSource" /><br />
+                <label>Amount</label>$<input type="number" class="money" min="0.00" step="0.01" name="amount" /><br />
+                <label>Income Schedule</label>
+                <select>
+                  <option name="incomeSchedule" value="">--</option>
+                  <option name="incomeSchedule" value="1">Yearly</option>
+                  <option name="incomeSchedule" value="2">Monthly</option>
+                  <option name="incomeSchedule" value="3">Weekly</option>
+                </select>
+  {% endblock content %}
